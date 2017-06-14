@@ -1,4 +1,4 @@
-* Gramática (simplificada e asd)
+* Gramática (simplificada e genérica)
 ** Regras de reescrita (leva um valor genérico para um outro valor genérico relativo no input)
 
 * Separar em barras e fazer uma frase

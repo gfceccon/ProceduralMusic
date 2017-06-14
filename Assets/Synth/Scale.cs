@@ -49,7 +49,7 @@ public class Scale
             scale[3] = this.Fourth;
             scale[4] = this.Fifth;
             scale[5] = this.MajorSixth;
-            scale[6] = this.MajorSixth;
+            scale[6] = this.MajorSeventh;
 
             return scale;
         }

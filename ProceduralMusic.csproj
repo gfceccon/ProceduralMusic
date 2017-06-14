@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ADC881AF-786F-E4E7-EB9A-C05E021EDD5C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
+    <UnityVersion>5.6.0f3</UnityVersion>
+    <RootNamespace></RootNamespace>
+    <LangVersion>4</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_5_6_0;UNITY_5_6;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_RUNTIME_NAVMESH_BUILDING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;ENABLE_VIDEO;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_5_6_0;UNITY_5_6;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_RUNTIME_NAVMESH_BUILDING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;ENABLE_VIDEO;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="Boo.Lang" />
+    <Reference Include="UnityScript.Lang" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TestRunner">
+      <HintPath>Library\UnityAssemblies\UnityEngine.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>Library\UnityAssemblies\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HoloLens">
+      <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VR">
+      <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook.Unity.Settings">
+      <HintPath>Library\FacebookSDK\Facebook.Unity.Settings.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Abstract\ObjectPool.cs" />
+    <Compile Include="Assets\Abstract\PathNode.cs" />
+    <Compile Include="Assets\Abstract\Tile.cs" />
+    <Compile Include="Assets\Abstract\Tuple.cs" />
+    <Compile Include="Assets\Abstract\Vector2i.cs" />
+    <Compile Include="Assets\CSharpSynth\Banks\Analog\AnalogInstrument.cs" />
+    <Compile Include="Assets\CSharpSynth\Banks\BankManager.cs" />
+    <Compile Include="Assets\CSharpSynth\Banks\Fm\Envelope.cs" />
+    <Compile Include="Assets\CSharpSynth\Banks\Fm\FMInstrument.cs" />
+    <Compile Include="Assets\CSharpSynth\Banks\Fm\IFMComponent.cs" />
+    <Compile Include="Assets\CSharpSynth\Banks\Instrument.cs" />
+    <Compile Include="Assets\CSharpSynth\Banks\InstrumentBank.cs" />
+    <Compile Include="Assets\CSharpSynth\Banks\Sfz\SfzInstrument.cs" />
+    <Compile Include="Assets\CSharpSynth\Banks\Sfz\SfzRegion.cs" />
+    <Compile Include="Assets\CSharpSynth\Effects\BasicAudioEffect.cs" />
+    <Compile Include="Assets\CSharpSynth\Effects\Echo.cs" />
+    <Compile Include="Assets\CSharpSynth\Effects\dBMeter.cs" />
+    <Compile Include="Assets\CSharpSynth\Midi\MidiEvent.cs" />
+    <Compile Include="Assets\CSharpSynth\Midi\MidiFile.cs" />
+    <Compile Include="Assets\CSharpSynth\Midi\MidiHeader.cs" />
+    <Compile Include="Assets\CSharpSynth\Midi\MidiHelper.cs" />
+    <Compile Include="Assets\CSharpSynth\Midi\MidiTrack.cs" />
+    <Compile Include="Assets\CSharpSynth\Properties\AssemblyInfo.cs" />
+    <Compile Include="Assets\CSharpSynth\Sequencer\MidiSequencer.cs" />
+    <Compile Include="Assets\CSharpSynth\Sequencer\MidiSequencerEvent.cs" />
+    <Compile Include="Assets\CSharpSynth\Synthesis\NoteRegistryKey.cs" />
+    <Compile Include="Assets\CSharpSynth\Synthesis\StreamSynthesizer.cs" />
+    <Compile Include="Assets\CSharpSynth\Synthesis\SynthHelper.cs" />
+    <Compile Include="Assets\CSharpSynth\Synthesis\Voice.cs" />
+    <Compile Include="Assets\CSharpSynth\Wave\DSP\BiQuadLowPass.cs" />
+    <Compile Include="Assets\CSharpSynth\Wave\DSP\SincLowPass.cs" />
+    <Compile Include="Assets\CSharpSynth\Wave\DataChunk.cs" />
+    <Compile Include="Assets\CSharpSynth\Wave\FactChunk.cs" />
+    <Compile Include="Assets\CSharpSynth\Wave\FormatChunk.cs" />
+    <Compile Include="Assets\CSharpSynth\Wave\IChunk.cs" />
+    <Compile Include="Assets\CSharpSynth\Wave\MasterChunk.cs" />
+    <Compile Include="Assets\CSharpSynth\Wave\Sample.cs" />
+    <Compile Include="Assets\CSharpSynth\Wave\WaveFile.cs" />
+    <Compile Include="Assets\CSharpSynth\Wave\WaveFileReader.cs" />
+    <Compile Include="Assets\CSharpSynth\Wave\WaveFileWriter.cs" />
+    <Compile Include="Assets\CSharpSynth\Wave\WaveHelper.cs" />
+    <Compile Include="Assets\Generation\Grammar.cs" />
+    <Compile Include="Assets\Generation\GrammarNode.cs" />
+    <Compile Include="Assets\Generation\ProcMusic.cs" />
+    <Compile Include="Assets\Generation\Product.cs" />
+    <Compile Include="Assets\Generation\Rule.cs" />
+    <Compile Include="Assets\State Machine\FSM.cs" />
+    <Compile Include="Assets\Synth\Chord.cs" />
+    <Compile Include="Assets\Synth\Drumkit.cs" />
+    <Compile Include="Assets\Synth\Note.cs" />
+    <Compile Include="Assets\Synth\Old\Piano.cs" />
+    <Compile Include="Assets\Synth\Old\SawWave.cs" />
+    <Compile Include="Assets\Synth\Old\SimpleWave.cs" />
+    <Compile Include="Assets\Synth\Old\SineWave.cs" />
+    <Compile Include="Assets\Synth\Old\SquareWave.cs" />
+    <Compile Include="Assets\Synth\Old\TriangleWave.cs" />
+    <Compile Include="Assets\Synth\Old\Wave.cs" />
+    <Compile Include="Assets\Synth\Playable.cs" />
+    <Compile Include="Assets\Synth\Scale.cs" />
+    <Compile Include="Assets\Synth\Song.cs" />
+    <Compile Include="Assets\Synth\States\Bridge.cs" />
+    <Compile Include="Assets\Synth\States\Chorus.cs" />
+    <Compile Include="Assets\Synth\States\Intro.cs" />
+    <Compile Include="Assets\Synth\States\MusicState.cs" />
+    <Compile Include="Assets\Synth\States\Verse.cs" />
+    <Compile Include="Assets\Synth\Synth.cs" />
+    <Compile Include="Assets\Synth\Tempo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Resources\CSharpSynth\Analog Bank\analog.txt" />
+    <None Include="Assets\Resources\CSharpSynth\FM Bank\fm.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\5thSawWave.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Accordion.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\AcousticBass.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Agogo.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\AltoSax.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Applause.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Atmosphere.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Bagpipe.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Bandoneon.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Banjo.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\BaritoneSax.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\BassLead.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Bassoon.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Bird.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\BottleBlow.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\BowedGlass.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Brass1.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\BreathNoise.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Brightness.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Brush.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Celesta.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Cello.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Charang.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\ChifferLead.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\ChoirAahs.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\ChurchOrgan1.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Clarinet.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Clav.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\CleanGtr.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Contrabass.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Crystal.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\DistortionGtr.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\EchoDrops.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\ElectricPiano1.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\ElectricPiano2.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Electronic.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\EnglishHorn.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Fantasia.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Fiddle.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\FingerBass.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Flute.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\FrenchHorns.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\FretlessBass.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Glockenspiel.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Goblin.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\GtFretNoise.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Gunshot.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\HaloPad.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\HarmonicGtr.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Harmonica.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Harp.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Harpsichord.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Helicopter.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Honkytonk.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\IceRain.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Jazz.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\JazzGtr.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Kalimba.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Koto.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Marimba.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\MeloTom1.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\MetalPad.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\MusicBox.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\MuteGtr.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\MuteTrumpet.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\NylonGtr.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Oboe.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Ocarina.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Orchestra.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\OrchestraHit.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Organ1.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Organ2.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Organ3.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\OverdriveGtr.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\PanFlute.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Piano1.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Piano2.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Piano3.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Piccolo.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\PickedBass.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\PizzicatoStr.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Polysynth.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Power.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Recorder.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\ReedOrgan.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\ReverseCym.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Room.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\SFX.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Santur.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\SawWave.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Seashore.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Shakuhachi.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Shamisen.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Shanai.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Sitar.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\SlapBass1.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\SlapBass2.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\SlowStrings.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\SoloVox.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\SopranoSax.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Soundtrack.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\SpaceVoice.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\SquareWave.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Standard.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\StarTheme.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\SteelDrums.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\SteelGtr.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Strings.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\SweepPad.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\SynthBass1.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\SynthBass2.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\SynthBrass1.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\SynthBrass2.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\SynthCalliope.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\SynthDrum.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\SynthStrings1.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\SynthStrings2.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\SynthVox.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\TR-808.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Taiko.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Telephone1.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\TenorSax.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Timpani.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\TinkleBell.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\TremoloStr.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Trombone.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Trumpet.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Tuba.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\TubularBell.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Vibraphone.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Viola.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Violin.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\VoiceOohs.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\WarmPad.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Whistle.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Woodblock.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\Xylophone.sfz.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\gm.txt" />
+    <None Include="Assets\Resources\CSharpSynth\GM Bank\skirim.txt" />
+    <None Include="Assets\Resources\CSharpSynth\Midis\Band_on_the_Run.mid.txt" />
+    <None Include="Assets\Resources\CSharpSynth\Midis\BattleGM.mid.txt" />
+    <None Include="Assets\Resources\CSharpSynth\Midis\DDRMAX2_ranking_SB_zb.mid.txt" />
+    <None Include="Assets\Resources\CSharpSynth\Midis\DrumSolo_BlocksAway.mid.txt" />
+    <None Include="Assets\Resources\CSharpSynth\Midis\FF6_Forever_Rachel.mid.txt" />
+    <None Include="Assets\Resources\CSharpSynth\Midis\GROOVE.MID.txt" />
+    <None Include="Assets\Resources\CSharpSynth\Midis\ISLAND.MID.txt" />
+    <None Include="Assets\Resources\CSharpSynth\Midis\N64ZeldaOcarinaEnding.mid.txt" />
+    <None Include="Assets\Resources\CSharpSynth\Midis\SSBM_HyruleTemple_Alt_FireEmblem.mid.txt" />
+    <None Include="Assets\Resources\CSharpSynth\Midis\SuperMario64_-_DireDireDocksRemixXG.mid.txt" />
+    <None Include="Assets\Resources\CSharpSynth\Midis\T_RaidenII_Stage1Theme.mid.txt" />
+    <None Include="Assets\Resources\CSharpSynth\Midis\The-Lylat-Wars_1-2.mid.txt" />
+    <None Include="Assets\Resources\CSharpSynth\Midis\WALTZFLR.MID.txt" />
+    <None Include="Assets\Resources\CSharpSynth\Midis\ZFS_Title_V1_3.mid.txt" />
+    <None Include="Assets\Resources\CSharpSynth\Midis\alad09.mid.txt" />
+    <None Include="Assets\Resources\CSharpSynth\Midis\carnival.mid.txt" />
+    <None Include="Assets\Resources\CSharpSynth\Midis\cbfd_heist.mid.txt" />
+    <None Include="Assets\Resources\CSharpSynth\Midis\eternia.mid.txt" />
+    <None Include="Assets\Resources\CSharpSynth\Midis\luf1them.mid.txt" />
+    <None Include="Assets\Resources\CSharpSynth\Midis\mirror_speedeaters2.mid.txt" />
+    <None Include="Assets\Resources\CSharpSynth\Midis\mtt2_outside.mid.txt" />
+    <None Include="Assets\Resources\CSharpSynth\Midis\xmasmedl.mid.txt" />
+    <None Include="Assets\Resources\CSharpSynth\Midis\z5hracermx2.mid.txt" />
+    <None Include="Assets\Resources\Drums.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
+</Project>

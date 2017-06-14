@@ -1,0 +1,15 @@
+* Gramática (simplificada e genérica)
+** Regras de reescrita (leva um valor genérico para um outro valor genérico relativo no input)
+
+* Separar em barras e fazer uma frase
+
+* Usar modelos estocásticos/probabilísticos para as notas/acordes
+** Usar distribuição de Poisson (discreto) com lambda alto (lembrando que a média = lambda) entre 50 e 100
+** Usar um step discreto para pegar as probabilidades proximas
+** Criar uma tabela de Markov baseada nos valores gerados
+** Normalizar a tabela usando 1 / (sum (x))
+** Gerar no máximo de canais do NES
+
+* Gerar a batida baseado na progressão (barras / frases)
+** Gerar o tempo das notas baseado na batida (calcular para sincronia)
+** Gerar o tempo das notas baseado no rítmo

@@ -1,3 +1,0 @@
-[BankFile]
-SuperSquare/fm/0/127/i/
-Drum/fm/0/127/d/

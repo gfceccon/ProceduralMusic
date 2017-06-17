@@ -7,89 +7,29 @@ using System.Collections;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
 
-class Grammar : MonoBehaviour
+class Grammar<T>
 {
-    private Dictionary<string, List<Rule<string>>> grammar;
-    private GrammarNode<string> head;
-    private GameObject tree;
+    private Dictionary<string, List<Rule<T>>> grammar;
+    private GrammarNode<T> head;
     private string initial;
+
+    public delegate void GrammarNodeFunction(ref GrammarNode<T> ndoe);
 
     public void Start()
     {
-        this.grammar = new Dictionary<string, List<Rule<string>>>();
-        this.head = new GrammarNode<string>();
-
-        AddRule("S", new Product<string>("A", false), new Product<string>("C1", true), new Product<string>("B", false));
-
-        AddRule("A", new Product<string>("D1", true), new Product<string>("A", false));
-        AddRule("A", new Product<string>("E1", true), new Product<string>("A", false));
-        AddRule("A", new Product<string>("G1", true));
-
-        AddRule("B", new Product<string>("A1", true), new Product<string>("B", false));
-        AddRule("B", new Product<string>("F1", true), new Product<string>("A", false));
-
-        SetInitial("S");
-
-        LinkedList<Product<string>> generatedList;
-
-        Print();
-
-        for (int i = 0; i < 10; i++)
-        {
-            generatedList = Generate(15);
-            string output = "";
-            foreach (var p in generatedList)
-                output += p.product + " ";
-            Debug.Log(output);
-        }
-        GenerateTree();
+        this.grammar = new Dictionary<string, List<Rule<T>>>();
+        this.head = new GrammarNode<T>();
     }
 
-    private void GenerateTree()
+    private void DFS(GrammarNodeFunction func)
     {
-        if (tree)
-            DestroyObject(tree);
-        tree = new GameObject("Grammar Tree");
-        TreeNode(tree.transform, head);
+        TreeNode(head, func);
     }
 
-    private void TreeNode(Transform parent, GrammarNode<string> node)
+    private void TreeNode(GrammarNode<T> node, GrammarNodeFunction func)
     {
-        foreach (Rule<string> rule in node.children.Keys)
-        {
-            GameObject nodeObj = new GameObject();
-            string ruleString = rule.production + " ->";
-
-            foreach (Product<string> product in rule.products)
-                ruleString += " " + product.product;
-            ruleString += "(" + node.children[rule].value + ")";
-
-            nodeObj.name = ruleString;
-            nodeObj.transform.SetParent(parent);
-
-            TreeNode(nodeObj.transform, node.children[rule].next);
-        }
-    }
-
-    public void Print()
-    {
-        foreach (string nonFinal in grammar.Keys)
-        {
-            string ruleString = nonFinal + " ->";
-            bool first = true;
-            foreach (Rule<string> rule in grammar[nonFinal])
-            {
-                if (!first)
-                    ruleString += " |";
-                else
-                    first = false;
-
-                foreach (Product<string> product in rule.products)
-                    ruleString += " " + product.product;
-                ruleString += "(" + rule.weight + ")";
-            }
-            Debug.Log(ruleString);
-        }
+        foreach (Rule<T> rule in node.children.Keys)
+            TreeNode(node.children[rule].next, func);
     }
 
     public bool SetInitial(string initial)
@@ -100,7 +40,7 @@ class Grammar : MonoBehaviour
         return true;
     }
 
-    public void AddRule(string production, params Product<string>[] products)
+    public void AddRule(string production, params Product<T>[] products)
     {
         bool isFinal = true;
         for (int index = 0; index < products.Length; index++)
@@ -112,128 +52,128 @@ class Grammar : MonoBehaviour
             }
         }
 
-        List<Rule<string>> rules = null;
-        Rule<string> rule = new Rule<string>(production, products);
+        List<Rule<T>> rules = null;
+        Rule<T> rule = new Rule<T>(production, products);
         try
         {
             rules = grammar[production];
         }
         catch (Exception)
         {
-            rules = new List<Rule<string>>();
+            rules = new List<Rule<T>>();
             grammar.Add(production, rules);
         }
         rule.isFinal = isFinal;
-        rules.Add(new Rule<string>(production, products));
+        rules.Add(new Rule<T>(production, products));
     }
 
-    public LinkedList<Product<string>> Generate(int maxDepth)
-    {
-        LinkedList<Product<string>> result = new LinkedList<Product<string>>();
-        result.AddFirst(new Product<string>(initial, false));
-        LinkedListNode<Product<string>> node;
-        LinkedListNode<Product<string>> next;
+    //public LinkedList<Product<string>> Generate(int maxDepth)
+    //{
+    //    LinkedList<Product<string>> result = new LinkedList<Product<string>>();
+    //    result.AddFirst(new Product<string>(initial, false));
+    //    LinkedListNode<Product<string>> node;
+    //    LinkedListNode<Product<string>> next;
 
-        node = result.First;
-        GenerateNext(result, node, head, maxDepth, false);
+    //    node = result.First;
+    //    GenerateNext(result, node, head, maxDepth, false);
 
-        node = result.First;
-        next = node.Next;
-        while (next != null)
-        {
-            if (!node.Value.isFinal)
-                GenerateNext(result, node, head, maxDepth, true);
-            node = next;
-            next = next.Next;
-        }
+    //    node = result.First;
+    //    next = node.Next;
+    //    while (next != null)
+    //    {
+    //        if (!node.Value.isFinal)
+    //            GenerateNext(result, node, head, maxDepth, true);
+    //        node = next;
+    //        next = next.Next;
+    //    }
 
-        return result;
-    }
+    //    return result;
+    //}
 
-    public void GenerateNext(LinkedList<Product<string>> list, LinkedListNode<Product<string>> current, 
-                                GrammarNode<string> treeNode, int depth, bool final)
-    {
-        if (depth == 0 || current.Value.isFinal)
-            return;
+    //public void GenerateNext(LinkedList<Product<T>> list, LinkedListNode<Product<T>> current, 
+    //                            GrammarNode<T> treeNode, int depth, bool final)
+    //{
+    //    if (depth == 0 || current.Value.isFinal)
+    //        return;
 
-        Rule<string> rule;
-        string product = current.Value.product;
+    //    Rule<T> rule;
+    //    T product = current.Value.product;
 
-        List<Rule<string>> rules;
-        grammar.TryGetValue(product, out rules);
-        if (rules == null)
-            return;
+    //    List<Rule<T>> rules;
+    //    grammar.TryGetValue(product, out rules);
+    //    if (rules == null)
+    //        return;
 
-        List<Rule<string>> finals = rules.FindAll(r => r.isFinal);
-        List<Rule<string>> nonFinals = rules.FindAll(r => !r.isFinal);
+    //    List<Rule<string>> finals = rules.FindAll(r => r.isFinal);
+    //    List<Rule<string>> nonFinals = rules.FindAll(r => !r.isFinal);
 
-        if ((final || nonFinals.Count == 0) && finals.Count != 0)
-            rule = finals[Random.Range(0, finals.Count)];
-        else
-            rule = nonFinals[Random.Range(0, nonFinals.Count)];
+    //    if ((final || nonFinals.Count == 0) && finals.Count != 0)
+    //        rule = finals[Random.Range(0, finals.Count)];
+    //    else
+    //        rule = nonFinals[Random.Range(0, nonFinals.Count)];
 
 
-        Tuple<float, GrammarNode<string>> tuple;
+    //    Tuple<float, GrammarNode<string>> tuple;
 
-        LinkedListNode<Product<string>> prev = current.Previous;
-        LinkedListNode<Product<string>> next = current.Next;
+    //    LinkedListNode<Product<string>> prev = current.Previous;
+    //    LinkedListNode<Product<string>> next = current.Next;
 
-        List<LinkedListNode<Product<string>>> products = new List<LinkedListNode<Product<string>>>();
+    //    List<LinkedListNode<Product<string>>> products = new List<LinkedListNode<Product<string>>>();
 
-        try
-        {
-            tuple = treeNode.children[rule];
-        } catch(Exception)
-        {
-            tuple = treeNode.AddRule(rule);
-        }
-        tuple.value *= 2;
-        rule.weight++;
+    //    try
+    //    {
+    //        tuple = treeNode.children[rule];
+    //    } catch(Exception)
+    //    {
+    //        tuple = treeNode.AddRule(rule);
+    //    }
+    //    tuple.value *= 2;
+    //    rule.weight++;
 
-        foreach (var p in rule.products)
-            products.Add(new LinkedListNode<Product<string>>(p));
+    //    foreach (var p in rule.products)
+    //        products.Add(new LinkedListNode<Product<string>>(p));
 
-        LinkedListNode<Product<string>> first = products[0];
-        LinkedListNode<Product<string>> last = products[products.Count - 1];
+    //    LinkedListNode<Product<string>> first = products[0];
+    //    LinkedListNode<Product<string>> last = products[products.Count - 1];
 
-        list.Remove(current);
+    //    list.Remove(current);
 
-        // First
-        if (prev == null)
-        {
-            products.Reverse();
-            foreach (var p in products)
-                list.AddFirst(p);
-        }
-        // Last
-        else if (next == null)
-        {
-            foreach (var p in products)
-                list.AddLast(p);
-        }
-        else
-        {
-            foreach (var p in products)
-            {
-                list.AddAfter(prev, p);
-                prev = p;
-            }
-        }
+    //    // First
+    //    if (prev == null)
+    //    {
+    //        products.Reverse();
+    //        foreach (var p in products)
+    //            list.AddFirst(p);
+    //    }
+    //    // Last
+    //    else if (next == null)
+    //    {
+    //        foreach (var p in products)
+    //            list.AddLast(p);
+    //    }
+    //    else
+    //    {
+    //        foreach (var p in products)
+    //        {
+    //            list.AddAfter(prev, p);
+    //            prev = p;
+    //        }
+    //    }
 
-        LinkedListNode<Product<string>> node = first;
-        do
-        {
-            Product<string> p = node.Value;
-            if (p.isFinal)
-            {
-                node = node.Next;
-                continue;
-            }
+    //    LinkedListNode<Product<string>> node = first;
+    //    do
+    //    {
+    //        Product<string> p = node.Value;
+    //        if (p.isFinal)
+    //        {
+    //            node = node.Next;
+    //            continue;
+    //        }
 
-            GenerateNext(list, node, tuple.next, depth - 1, final);
-            if (node == last)
-                break;
-            node = node.Next;
-        } while (node != null);
-    }
+    //        GenerateNext(list, node, tuple.next, depth - 1, final);
+    //        if (node == last)
+    //            break;
+    //        node = node.Next;
+    //    } while (node != null);
+    //}
 }

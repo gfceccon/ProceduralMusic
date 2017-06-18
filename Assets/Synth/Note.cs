@@ -37,17 +37,16 @@ public class Note
         }
         get
         {
-            return ((ENote)note);
+            return enote;
         }
     }
     public const int OCTAVE_NOTES = 12;
     public const int MIDI_NOTES = 10;
     private static float[] frequencies = new float[OCTAVE_NOTES * MIDI_NOTES];
-    private static bool init = false;
 
     public Note(ENote note = ENote.C, int octave = 4)
     {
-        this.note = ((int)note);
+        this.note = ((int)note) + octave * OCTAVE_NOTES;
         this.enote = note;
         this.octave = octave;
     }
@@ -61,6 +60,31 @@ public class Note
 
     public float ToFreq()
     {
-        return frequencies[(int)note + octave * OCTAVE_NOTES];
+        return frequencies[note];
+    }
+
+    public static bool operator ==(Note This, Note Other)
+    {
+        return This.note == Other.note;
+    }
+
+    public static bool operator !=(Note This, Note Other)
+    {
+        return This.note != Other.note;
+    }
+
+    public override bool Equals(object other)
+    {
+        if (other.GetType() == typeof(Note))
+        {
+            Note Other = ((Note)other);
+            return this == Other;
+        }
+        return base.Equals(other);
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
     }
 }

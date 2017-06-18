@@ -81,13 +81,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Abstract\Grammar.cs" />
     <Compile Include="Assets\Abstract\ObjectPool.cs" />
+    <Compile Include="Assets\Abstract\ProductionRule.cs" />
+    <Compile Include="Assets\Abstract\ReductionRule.cs" />
+    <Compile Include="Assets\Abstract\RewritingRule.cs" />
+    <Compile Include="Assets\Abstract\Rule.cs" />
     <Compile Include="Assets\Abstract\Tuple.cs" />
-    <Compile Include="Assets\Generation\Grammar.cs" />
-    <Compile Include="Assets\Generation\GrammarNode.cs" />
     <Compile Include="Assets\Generation\ProcMusic.cs" />
-    <Compile Include="Assets\Generation\Product.cs" />
-    <Compile Include="Assets\Generation\Rule.cs" />
     <Compile Include="Assets\Generation\Test.cs" />
     <Compile Include="Assets\State Machine\FSM.cs" />
     <Compile Include="Assets\Synth\Chord.cs" />

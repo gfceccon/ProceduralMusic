@@ -112,4 +112,44 @@ public class Chord
         }
         return this;
     }
+
+    public static bool operator ==(Chord This, Chord Other)
+    {
+        if (This.nMods != Other.nMods)
+            return false;
+        else
+        {
+            for (int i = 0; i < This.nMods; i++)
+            {
+                bool equal = false;
+                for (int j = 0; j < Other.nMods; j++)
+                    if (This.mods[i] == Other.mods[j])
+                        equal = true;
+                if (!equal)
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static bool operator !=(Chord This, Chord Other)
+    {
+        return !(This == Other);
+    }
+
+    public override bool Equals(object other)
+    {
+        if (other.GetType() == typeof(Chord))
+        {
+            Chord Other = ((Chord)other);
+            return this == Other;
+        }
+        return base.Equals(other);
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
 }

@@ -6,7 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public class ProcMusic : MonoBehaviour
+public class Square : Wave
 {
     void Start()
     {

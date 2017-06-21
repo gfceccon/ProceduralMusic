@@ -23,12 +23,18 @@ public enum ENote
     B
 };
 
-public class Note
+public class Note : IMusicGrammar
 {
+    int channel;
     private int note;
     private ENote enote;
     public int octave;
-    public ENote Value
+    public int Octave
+    {
+        set { octave = value; }
+        get { return octave; }
+    }
+    public ENote Note_
     {
         set
         {
@@ -51,7 +57,7 @@ public class Note
         this.octave = octave;
     }
 
-    public void Init()
+    public static void Init()
     {
         for(int i = 0; i < frequencies.Length; i++)
             frequencies[i] =  440f * Mathf.Pow(2f, ((i - 69) / 12f));
@@ -78,13 +84,29 @@ public class Note
         if (other.GetType() == typeof(Note))
         {
             Note Other = ((Note)other);
-            return this == Other;
+            return this.enote == Other.enote;
         }
-        return base.Equals(other);
+        else
+            return false;
     }
 
     public override int GetHashCode()
     {
         return base.GetHashCode();
+    }
+
+    public void Play(Synth synth)
+    {
+        channel = synth.Play(WaveType.Square, ToFreq(), 0.2f);
+    }
+
+    public void Stop(Synth synth)
+    {
+        synth.Stop(channel);
+    }
+
+    public object Clone()
+    {
+        return new Note(enote, octave);
     }
 }

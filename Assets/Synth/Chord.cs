@@ -31,7 +31,7 @@ public enum Modifier
     aug
 }
 
-public class Chord
+public class Chord : IMusicGrammar
 {
     public Note tone;
     public int nMods;
@@ -151,5 +151,20 @@ public class Chord
     public override int GetHashCode()
     {
         return base.GetHashCode();
+    }
+
+    public void Play(Synth synth)
+    {
+        //channel = synth.Play(WaveType.Square, ToFreq(), 0.2f);
+    }
+
+    public void Stop(Synth synth)
+    {
+        //synth.Stop(channel);
+    }
+
+    public object Clone()
+    {
+        return new Chord(tone);
     }
 }

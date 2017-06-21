@@ -7,7 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
 
-class Grammar<T>
+class Grammar<T> where T : IMusicGrammar
 {
     List<ProductionRule<T>> productions;
     List<RewritingnRule<T>> rewritings;

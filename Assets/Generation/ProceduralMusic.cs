@@ -6,43 +6,48 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
+[RequireComponent(typeof(Synth))]
 public class ProceduralMusic : MonoBehaviour
 {
+    private Synth synth;
     void Start()
     {
-        Grammar<ENote> grammar = Grammar<ENote>.Create(ENote.A).
-            AddProduction(new ProductionRule<ENote>().
-                Input(ENote.C).
-                Output(ENote.D, ENote.A).
+        synth = GetComponent<Synth>();
+        Grammar<Note> grammar = Grammar<Note>.Create(new Note(ENote.A)).
+            AddProduction(new ProductionRule<Note>().
+                Input(new Note(ENote.A)).
+                Output(new Note(ENote.A), new Note(ENote.A)).
                 SetCondition(UseRule).
                 AddPostProcess(AddProbability)).
-            AddRewrite(new RewritingnRule<ENote>().
-                Input(ENote.A).Output(ENote.F).
+            AddRewrite(new RewritingnRule<Note>().
+                Input(new Note(ENote.A)).
+                Output(new Note(ENote.A)).
                 SetCondition(UseRule).
                 AddPostProcess(AddProbability));
 
-        LinkedList<ENote> generated = grammar.Generate();
-        StartCoroutine(Play(generated));
+        LinkedList<Note> generated = grammar.Generate();
+        foreach (var note in generated)
+            print(note.Note_);
     }
 
-    bool UseRule(LinkedListNode<ENote> note)
+    bool UseRule(LinkedListNode<Note> note)
     {
         // TODO Definir se usa regra ou nao
         return true;
     }
 
-    void AddProbability(params LinkedListNode<ENote>[] notes)
+    void AddProbability(params LinkedListNode<Note>[] notes)
     {
         // TODO Fazer alteracoes na matriz
     }
 
     float time = 0.25f;
 
-    IEnumerator Play(LinkedList<ENote> notes)
+    IEnumerator Play(LinkedList<Note> notes)
     {
-        foreach (var enote in notes)
+        foreach (var note in notes)
         {
-            Note note = new Note(enote);
+            note.Play(synth);
             yield return new WaitForSeconds(time);
         }
     }

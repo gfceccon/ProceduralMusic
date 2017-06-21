@@ -6,7 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public class RewritingnRule<T> : Rule<T>
+public class RewritingnRule<T> : Rule<T> where T : IMusicGrammar
 {
     private T input;
     private T output;

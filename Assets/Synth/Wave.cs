@@ -19,6 +19,13 @@ public abstract class Wave
 
     public abstract void Process(float[] data, int channels);
 
+    public Wave(float frequency, float amplitude, float step)
+    {
+        Frequency = frequency;
+        Amplitude = amplitude;
+        Step = step;
+    }
+
     protected void Next()
     {
         Counter += Step;

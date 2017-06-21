@@ -6,17 +6,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Square : Wave
+public class Triangle : Wave
 {
-    public float DutyCycle = 0.5f;
     public override void Process(float[] data, int channels)
     {
         for (int i = 0; i < data.Length; i++)
         {
-            if (Counter < DutyCycle * Length)
-                data[i] += Amplitude * 0.5f;
+            if (Counter < Length * 0.5f)
+                data[i] += 4 * Counter * Amplitude * Frequency - Amplitude;
             else
-                data[i] -= Amplitude * 0.5f;
+                data[i] += -4 * (Counter - Length) * Amplitude * Frequency - Amplitude;
             Next();
         }
     }

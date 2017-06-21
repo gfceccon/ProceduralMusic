@@ -8,8 +8,8 @@ using System.Collections.Generic;
 
 public class ProductionRule<T> : Rule<T>
 {
-    public T input;
-    public List<T> output;
+    private T input;
+    private List<T> output;
 
     public ProductionRule<T> Input(T input)
     {
@@ -30,10 +30,11 @@ public class ProductionRule<T> : Rule<T>
         if (list == null || list.Count == 0)
             return list;
         LinkedListNode<T> node = list.First;
+        List<LinkedListNode<T>> result = new List<LinkedListNode<T>>();
 
         while (node != null)
         {
-            if (node.Value.Equals(input) && Apply())
+            if (node.Value.Equals(input) && Cond(node))
             {
                 if (node == list.First)
                     list.AddBefore(node, node.Value);
@@ -41,12 +42,16 @@ public class ProductionRule<T> : Rule<T>
                 LinkedListNode<T> auxiliar = node.Previous;
                 list.Remove(node);
                 foreach (var val in output)
+                {
                     auxiliar = list.AddAfter(auxiliar, val);
+                    result.Add(auxiliar);
+                }
 
                 if (node == list.First)
                     list.RemoveFirst();
             }
         }
+        PostProcess(result.ToArray());
         return list;
     }
 }

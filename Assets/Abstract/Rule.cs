@@ -8,9 +8,27 @@ using System.Collections.Generic;
 
 public abstract class Rule<T>
 {
-    public bool Apply()
+    public delegate bool Condition(LinkedListNode<T> value);
+    public delegate void PostRule(params LinkedListNode<T>[] value);
+
+    protected Condition Cond;
+    protected event PostRule Post;
+
+    public Rule<T> SetCondition(Condition applicationRule)
     {
-        return true;
+        Cond = applicationRule;
+        return this;
+    }
+
+    public Rule<T> AddPostProcess(PostRule action)
+    {
+        Post += action;
+        return this;
+    }
+
+    public void PostProcess(params LinkedListNode<T>[] value)
+    {
+        Post(value);
     }
 
     public abstract LinkedList<T> Write(LinkedList<T> list);

@@ -8,11 +8,7 @@ using System.Collections.Generic;
 
 public class Sawtooth : Wave
 {
-    void Start()
-    {
-    }
-
-    void Update()
+    public override void Process(float[] data, int channels)
     {
     }
 }

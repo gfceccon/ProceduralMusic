@@ -8,8 +8,8 @@ using System.Collections.Generic;
 
 public class RewritingnRule<T> : Rule<T>
 {
-    public T input;
-    public T output;
+    private T input;
+    private T output;
 
     public RewritingnRule<T> Input(T input)
     {
@@ -31,9 +31,10 @@ public class RewritingnRule<T> : Rule<T>
 
         while(node != null)
         {
-            if(node.Value.Equals(input) && Apply())
+            if(node.Value.Equals(input) && Cond(node))
                node.Value = output;
         }
+        PostProcess(node);
         return list;
     }
 }

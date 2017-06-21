@@ -7,22 +7,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-public enum ENote
-{
-    C = 0,
-    Db,
-    D,
-    Eb,
-    E,
-    F,
-    Gb,
-    G,
-    Ab,
-    A,
-    Bb,
-    B
-};
-
 public class Note : IMusicGrammar
 {
     int channel;

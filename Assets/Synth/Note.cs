@@ -7,7 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-public class Note : IMusicGrammar
+public class Note : ICloneable
 {
     int channel;
     private int note;
@@ -77,16 +77,6 @@ public class Note : IMusicGrammar
     public override int GetHashCode()
     {
         return base.GetHashCode();
-    }
-
-    public void Play(Synth synth)
-    {
-        channel = synth.Play(WaveType.Square, ToFreq(), 0.2f);
-    }
-
-    public void Stop(Synth synth)
-    {
-        synth.Stop(channel);
     }
 
     public object Clone()

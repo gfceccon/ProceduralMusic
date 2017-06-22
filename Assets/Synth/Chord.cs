@@ -31,25 +31,20 @@ public enum Modifier
     aug
 }
 
-public class Chord : IMusicGrammar
+public class Chord : ICloneable
 {
     public Note tone;
     public int nMods;
     private const int MAX_MODIFIER = 4;
     public Modifier[] mods = new Modifier[MAX_MODIFIER];
 
-    private Chord(Note tone)
+    public Chord(Note tone)
     {
         this.tone = tone;
         this.nMods = 0;
     }
 
-    public static Chord chord(Note tone)
-    {
-        return new Chord(tone);
-    }
-
-    public Chord mod(Modifier mod)
+    public Chord Mod(Modifier mod)
     {
         if (nMods == MAX_MODIFIER)
             return this;
@@ -115,22 +110,7 @@ public class Chord : IMusicGrammar
 
     public static bool operator ==(Chord This, Chord Other)
     {
-        if (This.nMods != Other.nMods)
-            return false;
-        else
-        {
-            for (int i = 0; i < This.nMods; i++)
-            {
-                bool equal = false;
-                for (int j = 0; j < Other.nMods; j++)
-                    if (This.mods[i] == Other.mods[j])
-                        equal = true;
-                if (!equal)
-                    return false;
-            }
-        }
-
-        return true;
+        return This.tone == Other.tone;
     }
 
     public static bool operator !=(Chord This, Chord Other)
@@ -153,18 +133,13 @@ public class Chord : IMusicGrammar
         return base.GetHashCode();
     }
 
-    public void Play(Synth synth)
-    {
-        //channel = synth.Play(WaveType.Square, ToFreq(), 0.2f);
-    }
-
-    public void Stop(Synth synth)
-    {
-        //synth.Stop(channel);
-    }
-
     public object Clone()
     {
-        return new Chord(tone);
+        Chord clone = new Chord(this.tone);
+        for (int mod = 0; mod < nMods; mod++)
+        {
+            clone.Mod(this.mods[mod]);
+        };
+        return clone;
     }
 }

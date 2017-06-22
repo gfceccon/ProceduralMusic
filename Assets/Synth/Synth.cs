@@ -82,8 +82,25 @@ public class Synth : MonoBehaviour
         Note.Init();
     }
 
-    public void Stop(int channel)
+    public void Stop(WaveType type, int channel)
     {
+        switch (type)
+        {
+            case WaveType.Square:
+                usingSquare[channel] = false;
+                break;
+            case WaveType.Sawtooth:
+                usingSawtooth[channel] = false;
+                break;
+            case WaveType.Triangle:
+                usingTriangle[channel] = false;
+                break;
+            case WaveType.Noise:
+                usingNoise[channel] = false;
+                break;
+            default:
+                break;
+        }
     }
 
     public int Play(WaveType type, float freq, float amplitude, DutyCycle cycle = DutyCycle.Half)

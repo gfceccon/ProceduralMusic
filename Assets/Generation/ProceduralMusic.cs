@@ -43,9 +43,9 @@ public class ProceduralMusic : MonoBehaviour
 
     float time = 0.25f;
 
-    IEnumerator Play(LinkedList<Note> notes)
+    IEnumerator Play(LinkedList<IMusicGrammar> list)
     {
-        foreach (var note in notes)
+        foreach (var note in list)
         {
             note.Play(synth);
             yield return new WaitForSeconds(time);

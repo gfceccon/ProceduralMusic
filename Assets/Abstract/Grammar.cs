@@ -9,6 +9,9 @@ using Random = UnityEngine.Random;
 
 class Grammar<T> where T : IMusicGrammar
 {
+    private const int MIN_PASSES = 1;
+    private const int MAX_PASSES = 5;
+
     List<ProductionRule<T>> productions;
     List<RewritingnRule<T>> rewritings;
 
@@ -16,13 +19,13 @@ class Grammar<T> where T : IMusicGrammar
 
     private Grammar() { }
 
-    public static Grammar<T> Create(params T[] initial)
+    public Grammar(params T[] initial)
     {
-        Grammar<T> grammar = new Grammar<T>();
-        grammar.initial = new List<T>();
+        this.initial = new List<T>();
+        this.productions = new List<ProductionRule<T>>();
+        this.rewritings = new List<RewritingnRule<T>>();
         if (initial != null)
-            grammar.initial.AddRange(initial);
-        return grammar;
+            this.initial.AddRange(initial);
     }
 
     public Grammar<T> AddProduction(Rule<T> prod)
@@ -37,13 +40,18 @@ class Grammar<T> where T : IMusicGrammar
         return this;
     }
 
-    public LinkedList<T> Generate()
+    public LinkedList<T> Generate(int passes = 1)
     {
-        LinkedList<T> list = new LinkedList<T>();
-        foreach (var rule in productions)
-            rule.Write(list);
-        foreach (var rule in rewritings)
-            rule.Write(list);
+        LinkedList<T> list = new LinkedList<T>(initial);
+        passes = Mathf.Clamp(passes, MIN_PASSES, MAX_PASSES);
+        while (passes > 0)
+        {
+            foreach (var rule in productions)
+                rule.Write(list);
+            foreach (var rule in rewritings)
+                rule.Write(list);
+            passes--;
+        }
         return list;
     }
 }

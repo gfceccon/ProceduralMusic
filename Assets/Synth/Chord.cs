@@ -38,18 +38,13 @@ public class Chord : IMusicGrammar
     private const int MAX_MODIFIER = 4;
     public Modifier[] mods = new Modifier[MAX_MODIFIER];
 
-    private Chord(Note tone)
+    public Chord(Note tone)
     {
         this.tone = tone;
         this.nMods = 0;
     }
 
-    public static Chord chord(Note tone)
-    {
-        return new Chord(tone);
-    }
-
-    public Chord mod(Modifier mod)
+    public Chord Mod(Modifier mod)
     {
         if (nMods == MAX_MODIFIER)
             return this;
@@ -153,7 +148,7 @@ public class Chord : IMusicGrammar
         return base.GetHashCode();
     }
 
-    public void Play(Synth synth)
+    public void Play(Synth synth, WaveType wave, float amplitude, DutyCycle dutyCycle = DutyCycle.Half)
     {
         //channel = synth.Play(WaveType.Square, ToFreq(), 0.2f);
     }

@@ -82,16 +82,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Abstract\Grammar.cs" />
-    <Compile Include="Assets\Abstract\MusicGrammar.cs" />
+    <Compile Include="Assets\Abstract\IMusicGrammar.cs" />
     <Compile Include="Assets\Abstract\ProductionRule.cs" />
     <Compile Include="Assets\Abstract\RewritingRule.cs" />
     <Compile Include="Assets\Abstract\Rule.cs" />
     <Compile Include="Assets\Abstract\Tuple.cs" />
-    <Compile Include="Assets\Generation\Dice.cs" />
-    <Compile Include="Assets\Generation\MarkovChain.cs" />
-    <Compile Include="Assets\Generation\Poisson.cs" />
     <Compile Include="Assets\Generation\ProceduralMusic.cs" />
-    <Compile Include="Assets\Generation\exampleMarkov.cs" />
     <Compile Include="Assets\State Machine\FSM.cs" />
     <Compile Include="Assets\Synth\Chord.cs" />
     <Compile Include="Assets\Synth\Noise.cs" />

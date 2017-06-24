@@ -6,9 +6,25 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
+public enum ENote
+{
+    C = 0,
+    Db,
+    D,
+    Eb,
+    E,
+    F,
+    Gb,
+    G,
+    Ab,
+    A,
+    Bb,
+    B
+};
 
 public class Note : IMusicGrammar
 {
+    WaveType waveType;
     int channel;
     private int note;
     private ENote enote;
@@ -79,14 +95,15 @@ public class Note : IMusicGrammar
         return base.GetHashCode();
     }
 
-    public void Play(Synth synth)
+    public void Play(Synth synth, WaveType waveType, float amplitude, DutyCycle dutyCycle = DutyCycle.Half)
     {
-        channel = synth.Play(WaveType.Square, ToFreq(), 0.2f);
+        this.waveType = waveType;
+        channel = synth.Play(waveType, ToFreq(), amplitude, dutyCycle);
     }
 
     public void Stop(Synth synth)
     {
-        synth.Stop(channel);
+        synth.Stop(waveType, channel);
     }
 
     public object Clone()

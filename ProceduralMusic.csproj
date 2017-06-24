@@ -90,14 +90,14 @@
     <Compile Include="Assets\Generation\ProceduralMusic.cs" />
     <Compile Include="Assets\State Machine\FSM.cs" />
     <Compile Include="Assets\Synth\Chord.cs" />
-    <Compile Include="Assets\Synth\Noise.cs" />
     <Compile Include="Assets\Synth\Note.cs" />
-    <Compile Include="Assets\Synth\Sawtooth.cs" />
     <Compile Include="Assets\Synth\Scale.cs" />
-    <Compile Include="Assets\Synth\Square.cs" />
     <Compile Include="Assets\Synth\Synth.cs" />
-    <Compile Include="Assets\Synth\Triangle.cs" />
-    <Compile Include="Assets\Synth\Wave.cs" />
+    <Compile Include="Assets\Synth\Waves\Noise.cs" />
+    <Compile Include="Assets\Synth\Waves\Sawtooth.cs" />
+    <Compile Include="Assets\Synth\Waves\Square.cs" />
+    <Compile Include="Assets\Synth\Waves\Triangle.cs" />
+    <Compile Include="Assets\Synth\Waves\Wave.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

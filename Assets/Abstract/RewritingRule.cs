@@ -31,8 +31,9 @@ public class RewritingnRule<T> : Rule<T> where T : IMusicGrammar
 
         while(node != null)
         {
-            if(node.Value.Equals(input) && Cond(node))
-               node.Value = output;
+            if (node.Value.Equals(input) && Cond(node))
+                node.Value = (T)output.Clone();
+            node = node.Next;
         }
         PostProcess(node);
         return list;

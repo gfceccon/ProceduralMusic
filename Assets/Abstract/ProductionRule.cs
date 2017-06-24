@@ -34,22 +34,28 @@ public class ProductionRule<T> : Rule<T> where T : IMusicGrammar
 
         while (node != null)
         {
+            bool first = false;
             if (node.Value.Equals(input) && Cond(node))
             {
                 if (node == list.First)
+                {
+                    first = true;
                     list.AddBefore(node, node.Value);
+                }
 
                 LinkedListNode<T> auxiliar = node.Previous;
                 list.Remove(node);
                 foreach (var val in output)
                 {
-                    auxiliar = list.AddAfter(auxiliar, val);
+                    auxiliar = list.AddAfter(auxiliar, (T)val.Clone());
                     result.Add(auxiliar);
                 }
 
-                if (node == list.First)
+                if (first)
                     list.RemoveFirst();
+                node = auxiliar;
             }
+            node = node.Next;
         }
         PostProcess(result.ToArray());
         return list;

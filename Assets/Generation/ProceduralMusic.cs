@@ -15,51 +15,63 @@ public class ProceduralMusic : MonoBehaviour
     void Start()
     {
         synth = GetComponent<Synth>();
-        Grammar<Note> grammar = new Grammar<Note>(new Note(ENote.A), new Note(ENote.C), new Note(ENote.E), new Note(ENote.G)).
-            AddProduction(new ProductionRule<Note>().
-                Input(new Note(ENote.A)).
-                Output(new Note(ENote.A), new Note(ENote.D)).
-                SetCondition(UseRule).
-                AddPostProcess(AddProbability)).
-            AddProduction(new ProductionRule<Note>().
-                Input(new Note(ENote.E)).
-                Output(new Note(ENote.E), new Note(ENote.A)).
-                SetCondition(UseRule).
-                AddPostProcess(AddProbability)).
-            AddRewrite(new RewritingnRule<Note>().
-                Input(new Note(ENote.A)).
-                Output(new Note(ENote.G)).
-                SetCondition(UseRule).
-                AddPostProcess(AddProbability));
 
-        LinkedList<Note> generated = grammar.Generate(10);
-        foreach (var note in generated)
-            print(note.Note_);
-        StartCoroutine(Play(generated));
+        Grammar<string> grammar = new Grammar<string>("4B").
+            AddProduction(new ProductionRule<string>().
+                Input("4B").
+                Output("2B", "2B").
+                SetCondition(Coin)).
+            AddProduction(new ProductionRule<string>().
+                Input("4B").
+                Output("2B", "1B", "1B").
+                SetCondition(Coin)).
+            AddProduction(new ProductionRule<string>().
+                Input("4B").
+                Output("1B", "2B", "1B").
+                SetCondition(Coin)).
+            AddProduction(new ProductionRule<string>().
+                Input("2B").
+                Output("h", "q.", "h", "e", "e", "e", "q").
+                SetCondition(Coin)).
+            AddProduction(new ProductionRule<string>().
+                Input("2B").
+                Output("h.", "q", "e", "e", "q", "h").
+                SetCondition(Coin)).
+            AddProduction(new ProductionRule<string>().
+                Input("1B").
+                Output("h", "q", "q").
+                SetCondition(Coin)).
+            AddProduction(new ProductionRule<string>().
+                Input("1B").
+                Output("q", "q", "q", "q").
+                SetCondition(Coin)).
+            AddProduction(new ProductionRule<string>().
+                Input("1B").
+                Output("h.", "q").
+                SetCondition(Coin));
+
+        LinkedList<string> tempo = grammar.Generate(10);
+        string values = "";
+        foreach (string note in tempo)
+            values += note + " ";
+        print(values);
+        StartCoroutine(Play(tempo));
     }
 
-    bool UseRule(LinkedListNode<Note> note)
+    bool Coin(LinkedListNode<string> bar)
     {
-        // TODO Definir se usa regra ou nao
         return Rand.Range(0,2) == 0;
     }
 
-    void AddProbability(params LinkedListNode<Note>[] notes)
+    IEnumerator Play(LinkedList<string> notes)
     {
-        // TODO Fazer alteracoes na matriz
-    }
-
-    float time = 0.25f;
-
-    IEnumerator Play(LinkedList<IMusicGrammar> list)
-    {
-        foreach (var note in list)
+        foreach (string note in notes)
         {
-            print("Play " + note.Note_);
-            note.Play(synth, WaveType.Square, 0.2f, DutyCycle.Eighth);
-            yield return new WaitForSeconds(time);
-            note.Stop(synth);
-            print("Stop " + note.Note_);
+            int channel = synth.Play(WaveType.Triangle, 220f, 0.1f);
+            print(Tempo.Time(note, Tempo.Beat.Quarter, 120f));
+            yield return new WaitForSeconds(Tempo.Time(note, Tempo.Beat.Quarter, 120f));
+            synth.Stop(WaveType.Triangle, channel);
+            yield return new WaitForSeconds(0.2f);
         }
     }
 }

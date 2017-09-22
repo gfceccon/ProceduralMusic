@@ -134,9 +134,9 @@ public class Synth : MonoBehaviour
             case WaveType.Sawtooth:
                 for (int ch = 0; ch < SAWTOOTH_CHANNELS; ch++)
                 {
-                    if (usingSquare[ch])
+                    if (usingSawtooth[ch])
                         continue;
-                    usingSquare[ch] = true;
+                    usingSawtooth[ch] = true;
                     wave = sawtooth[ch];
                     channel = ch;
                     break;
@@ -145,9 +145,9 @@ public class Synth : MonoBehaviour
             case WaveType.Triangle:
                 for (int ch = 0; ch < TRIANGLE_CHANNELS; ch++)
                 {
-                    if (usingSquare[ch])
+                    if (usingTriangle[ch])
                         continue;
-                    usingSquare[ch] = true;
+                    usingTriangle[ch] = true;
                     wave = triangle[ch];
                     channel = ch;
                     break;

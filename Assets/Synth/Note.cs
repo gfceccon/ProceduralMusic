@@ -22,7 +22,7 @@ public enum ENote
     B
 };
 
-public class Note : ICloneable
+public class Note : IMusicGrammar
 {
     WaveType waveType;
     int channel;

@@ -7,7 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
 
-class Grammar<T> where T : IMusicGrammar
+class Grammar<T> where T : ICloneable
 {
     private const int MIN_PASSES = 1;
     private const int MAX_PASSES = 5;

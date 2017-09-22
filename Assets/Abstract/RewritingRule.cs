@@ -6,7 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public class RewritingnRule<T> : Rule<T> where T : IMusicGrammar
+public class RewritingnRule<T> : Rule<T> where T : ICloneable
 {
     private T input;
     private T output;

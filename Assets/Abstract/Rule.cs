@@ -6,7 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public abstract class Rule<T> where T : IMusicGrammar
+public abstract class Rule<T> where T : ICloneable
 {
     public delegate bool Condition(LinkedListNode<T> value);
     public delegate void PostRule(params LinkedListNode<T>[] value);

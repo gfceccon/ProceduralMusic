@@ -95,13 +95,13 @@ public class Note : IMusicGrammar
         return base.GetHashCode();
     }
 
-    public void Play(Synth synth, WaveType waveType, float amplitude, DutyCycle dutyCycle = DutyCycle.Half)
+    public void Play(Player synth, WaveType waveType, float amplitude, DutyCycle dutyCycle = DutyCycle.Half)
     {
         this.waveType = waveType;
         channel = synth.Play(waveType, ToFreq(), amplitude, dutyCycle);
     }
 
-    public void Stop(Synth synth)
+    public void Stop(Player synth)
     {
         synth.Stop(waveType, channel);
     }

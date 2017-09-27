@@ -87,8 +87,9 @@
     <Compile Include="Assets\Generation\ProceduralMusic.cs" />
     <Compile Include="Assets\Synth\Chord.cs" />
     <Compile Include="Assets\Synth\Note.cs" />
+    <Compile Include="Assets\Synth\Player.cs" />
     <Compile Include="Assets\Synth\Scale.cs" />
-    <Compile Include="Assets\Synth\Synth.cs" />
+    <Compile Include="Assets\Synth\Synthesizer.cs" />
     <Compile Include="Assets\Synth\Tempo.cs" />
     <Compile Include="Assets\Synth\Waves\Noise.cs" />
     <Compile Include="Assets\Synth\Waves\Sawtooth.cs" />

@@ -8,13 +8,17 @@ using System.Collections.Generic;
 
 using Rand = UnityEngine.Random;
 
-[RequireComponent(typeof(Synth))]
+[RequireComponent(typeof(Player))]
+[RequireComponent(typeof(Synthesizer))]
 public class ProceduralMusic : MonoBehaviour
 {
-    private Synth synth;
+    public float bpm;
+    private Player player;
+    private Synthesizer midi;
     void Start()
     {
-        synth = GetComponent<Synth>();
+        player = GetComponent<Player>();
+        midi = GetComponent<Synthesizer>();
 
         Grammar<string> grammar = new Grammar<string>("4B").
             AddProduction(new ProductionRule<string>().
@@ -65,13 +69,14 @@ public class ProceduralMusic : MonoBehaviour
 
     IEnumerator Play(LinkedList<string> notes)
     {
+        float time = 0f;
         foreach (string note in notes)
         {
-            int channel = synth.Play(WaveType.Triangle, 220f, 0.1f);
-            print(Tempo.Time(note, Tempo.Beat.Quarter, 120f));
-            yield return new WaitForSeconds(Tempo.Time(note, Tempo.Beat.Quarter, 120f));
-            synth.Stop(WaveType.Triangle, channel);
-            yield return new WaitForSeconds(0.2f);
+            int channel = player.Play(WaveType.Triangle, 220f, 0.1f);
+            float tempo = Tempo.Time(note, Tempo.Beat.Quarter, bpm);
+            yield return new WaitForSeconds(tempo);
+            player.Stop(WaveType.Triangle, channel);
+            time += tempo;
         }
     }
 }

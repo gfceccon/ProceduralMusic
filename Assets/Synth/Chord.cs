@@ -133,12 +133,12 @@ public class Chord : ICloneable
         return base.GetHashCode();
     }
 
-    public void Play(Synth synth, WaveType wave, float amplitude, DutyCycle dutyCycle = DutyCycle.Half)
+    public void Play(Player synth, WaveType wave, float amplitude, DutyCycle dutyCycle = DutyCycle.Half)
     {
         //channel = synth.Play(WaveType.Square, ToFreq(), 0.2f);
     }
 
-    public void Stop(Synth synth)
+    public void Stop(Player synth)
     {
         //synth.Stop(channel);
     }

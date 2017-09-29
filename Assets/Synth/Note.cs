@@ -64,6 +64,11 @@ public class Note : IMusicGrammar
 
     }
 
+    public static float MidiToFreq(int midi)
+    {
+        return frequencies[midi];
+    }
+
     public float ToFreq()
     {
         return frequencies[note];
@@ -95,13 +100,13 @@ public class Note : IMusicGrammar
         return base.GetHashCode();
     }
 
-    public void Play(Player synth, WaveType waveType, float amplitude, DutyCycle dutyCycle = DutyCycle.Half)
+    public void Play(SynthPlayer synth, WaveType waveType, float amplitude, DutyCycle dutyCycle = DutyCycle.Half)
     {
         this.waveType = waveType;
         channel = synth.Play(waveType, ToFreq(), amplitude, dutyCycle);
     }
 
-    public void Stop(Player synth)
+    public void Stop(SynthPlayer synth)
     {
         synth.Stop(waveType, channel);
     }

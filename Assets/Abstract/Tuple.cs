@@ -1,10 +1,10 @@
 ﻿public class Tuple<T1, T2>
 {
-    public T1 value;
-    public T2 next;
+    public T1 first;
+    public T2 second;
     internal Tuple(T1 first, T2 second)
     {
-        value = first;
-        next = second;
+        this.first = first;
+        this.second = second;
     }
 }

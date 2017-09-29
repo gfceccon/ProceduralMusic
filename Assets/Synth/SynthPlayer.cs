@@ -21,7 +21,7 @@ public enum DutyCycle
     Half
 }
 
-public class Player : MonoBehaviour
+public class SynthPlayer : MonoBehaviour
 {
     private const int SQUARE_CHANNELS = 3;
     private Square[] square = new Square[SQUARE_CHANNELS];

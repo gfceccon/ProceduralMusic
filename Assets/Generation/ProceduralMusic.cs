@@ -7,20 +7,29 @@ using System.Collections;
 using System.Collections.Generic;
 
 using Rand = UnityEngine.Random;
+using System.Linq;
 
-[RequireComponent(typeof(Player))]
-[RequireComponent(typeof(Synthesizer))]
+[RequireComponent(typeof(Config))]
+[RequireComponent(typeof(SynthWave))]
+[RequireComponent(typeof(SynthPlayer))]
 public class ProceduralMusic : MonoBehaviour
 {
-    public float bpm;
-    private Player player;
-    private Synthesizer midi;
+    private Config config;
+    private SynthWave wave;
+    private SynthPlayer player;
+
+    private Grammar<string> grammar;
+
+    private List<float> scale = new List<float> { 0, 2, 3, 5, 7, 8, 10 };
+
+
     void Start()
     {
-        player = GetComponent<Player>();
-        midi = GetComponent<Synthesizer>();
+        config = GetComponent<Config>();
+        wave = GetComponent<SynthWave>();
+        player = GetComponent<SynthPlayer>();
 
-        Grammar<string> grammar = new Grammar<string>("4B").
+        grammar = new Grammar<string>("4B", "4B").
             AddProduction(new ProductionRule<string>().
                 Input("4B").
                 Output("2B", "2B").
@@ -53,13 +62,6 @@ public class ProceduralMusic : MonoBehaviour
                 Input("1B").
                 Output("h.", "q").
                 SetCondition(Coin));
-
-        LinkedList<string> tempo = grammar.Generate(10);
-        string values = "";
-        foreach (string note in tempo)
-            values += note + " ";
-        print(values);
-        StartCoroutine(Play(tempo));
     }
 
     bool Coin(LinkedListNode<string> bar)
@@ -67,15 +69,47 @@ public class ProceduralMusic : MonoBehaviour
         return Rand.Range(0,2) == 0;
     }
 
+    public List<Tuple<string, int>> Generate()
+    {
+        LinkedList<string> tempo = grammar.Generate(10);
+        List<Tuple<string, int>> music = new List<Tuple<string, int>>();
+
+        float time = 0f;
+        foreach (string length in tempo)
+        {
+            float midi = wave.Synth(time);
+            int oct = (int)(midi / 12f);
+            float note = midi % 12;
+            float closest = scale.OrderBy(item => Math.Abs(note - item)).First();
+            midi = oct * 12 + closest;
+            time += Tempo.Time(length, config.noteLength, config.bpm);
+
+            music.Add(new Tuple<string, int>(length, (int)midi));
+        }
+
+        StartCoroutine(Play(tempo));
+        return music;
+    }
+
     IEnumerator Play(LinkedList<string> notes)
     {
+        Note.Init();
         float time = 0f;
-        foreach (string note in notes)
+
+        
+        foreach (string length in notes)
         {
-            int channel = player.Play(WaveType.Triangle, 220f, 0.1f);
-            float tempo = Tempo.Time(note, Tempo.Beat.Quarter, bpm);
+            float midi = wave.Synth(time);
+            int oct = (int)(midi / 12f);
+            float note = midi % 12;
+            float closest = scale.OrderBy(item => Math.Abs(note - item)).First();
+            midi = oct * 12 + closest;
+
+            float freq = Note.MidiToFreq((int)midi);
+            int channel = player.Play(WaveType.Square, freq, 0.1f);
+            float tempo = Tempo.Time(length, config.noteLength, config.bpm);
             yield return new WaitForSeconds(tempo);
-            player.Stop(WaveType.Triangle, channel);
+            player.Stop(WaveType.Square, channel);
             time += tempo;
         }
     }

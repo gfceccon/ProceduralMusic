@@ -5,15 +5,11 @@ using UnityEngine;
 public class SynthWave : MonoBehaviour
 {
     public int displacement;
-    public Oscilator[] master;
+    public List<Oscilator> master;
 
-    [System.Serializable]
-    public class Oscilator
+    void Start()
     {
-        public float amplitude;
-        public float frequency;
-        public float phase;
-        public Oscilator[] modulators;
+        master = new List<Oscilator>();
     }
 
     public float Synth(float time)

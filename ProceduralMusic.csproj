@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.1.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -80,6 +82,8 @@
   <ItemGroup>
     <Compile Include="Assets\Abstract\Grammar.cs" />
     <Compile Include="Assets\Abstract\IMusicGrammar.cs" />
+    <Compile Include="Assets\Abstract\MinMax.cs" />
+    <Compile Include="Assets\Abstract\Oscilator.cs" />
     <Compile Include="Assets\Abstract\ProductionRule.cs" />
     <Compile Include="Assets\Abstract\RewritingRule.cs" />
     <Compile Include="Assets\Abstract\Rule.cs" />
@@ -97,9 +101,18 @@
     <Compile Include="Assets\Synth\Waves\Square.cs" />
     <Compile Include="Assets\Synth\Waves\Triangle.cs" />
     <Compile Include="Assets\Synth\Waves\Wave.cs" />
+    <Compile Include="Assets\UI\AddOsc.cs" />
+    <Compile Include="Assets\UI\AmplitudeSlider.cs" />
     <Compile Include="Assets\UI\CameraScript.cs" />
+    <Compile Include="Assets\UI\FrequencySlider.cs" />
+    <Compile Include="Assets\UI\MasterUI.cs" />
     <Compile Include="Assets\UI\MusicUI.cs" />
-    <Compile Include="Assets\UI\SynthUI.cs" />
+    <Compile Include="Assets\UI\NameUI.cs" />
+    <Compile Include="Assets\UI\OscilatorUI.cs" />
+    <Compile Include="Assets\UI\PhaseSlider.cs" />
+    <Compile Include="Assets\UI\RemoveOsc.cs" />
+    <Compile Include="Assets\UI\TabsUI.cs" />
+    <Compile Include="Assets\UI\WaveUI.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

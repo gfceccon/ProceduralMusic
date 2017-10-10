@@ -16,8 +16,7 @@ public class Tempo
         Half,
         Quarter,
         Eighth,
-        Sixteenth,
-        Min
+        Sixteenth
     }
 
     private Tempo() { }
